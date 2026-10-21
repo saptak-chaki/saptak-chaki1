@@ -7,7 +7,7 @@ on:
   push:
     branches: [main]
     paths:
-      - generate_profile.py
+      - generate-profile.py
       - .github/workflows/update-profile.yml
 
 permissions:
@@ -36,7 +36,7 @@ jobs:
           # PROFILE_TOKEN (scopes: read:user, repo) and it will be used instead.
           GITHUB_TOKEN: ${{ secrets.PROFILE_TOKEN || secrets.GITHUB_TOKEN }}
           GITHUB_USER: ${{ github.repository_owner }}
-        run: python generate-profile.py
+        run: python scripts/generate-profile.py
 
       - name: Commit changes
         run: |
