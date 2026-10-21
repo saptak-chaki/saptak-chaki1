@@ -14,6 +14,7 @@
 @keyframes flick{0%,100%{opacity:1}28%{opacity:.8}46%{opacity:1}72%{opacity:.88}}
 .gs{animation:gs 6.5s ease-in-out infinite;animation-delay:var(--d,0s);transform-box:fill-box;transform-origin:50% 50%}
 @keyframes gs{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(.8);opacity:.55}}
+.ember{animation:rise linear infinite}
 @keyframes rise{0%{transform:translateY(0) translateX(0);opacity:0}12%{opacity:.95}100%{transform:translateY(-520px) translateX(24px);opacity:0}}
 .bat{animation:fly 16s linear infinite}
 @keyframes fly{0%{transform:translateX(-60px)}100%{transform:translateX(1060px)}}
@@ -22,310 +23,209 @@
 .num{animation:pop 3.2s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 50%}
 @keyframes pop{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}
-text{font-family:Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif}.m,.p{font-family:'Courier New',Courier,monospace}.p{font-weight:700;font-size:17px}.s{font-family:Georgia,serif}.c{fill:#0b0604;fill-opacity:.5;stroke:#ff3b1f;stroke-width:1.8;filter:url(#cardGlow)}.h{fill:#16164a;stroke:#ff6a2a;stroke-width:2}.n{fill:#0d1424;stroke:#35506e;stroke-width:1.2}.e{fill:#ffa43a;animation:rise linear infinite}.bobA,.bobB,.bobC{transform-box:fill-box;transform-origin:50% 100%}
 </style>
+
 <defs>
-<radialGradient id="bgG" cx="50%" cy="38%" r="80%">
-<stop offset="0" stop-color="#2b1309"/>
-<stop offset=".55" stop-color="#130a07"/>
-<stop offset="1" stop-color="#050303"/>
-</radialGradient>
-<radialGradient id="moonG" cx="50%" cy="50%" r="50%">
-<stop offset="0" stop-color="#ffb347" stop-opacity=".32"/>
-<stop offset="1" stop-color="#ff6a00" stop-opacity="0"/>
-</radialGradient>
-<linearGradient id="fogG" x1="0" y1="0" x2="0" y2="1">
-<stop offset="0" stop-color="#ff7a1a" stop-opacity="0"/>
-<stop offset="1" stop-color="#ff7a1a" stop-opacity=".14"/>
-</linearGradient>
-<radialGradient id="lobe" cx="36%" cy="28%" r="85%">
-<stop offset="0" stop-color="#ffc067"/>
-<stop offset=".28" stop-color="#ff8f24"/>
-<stop offset=".65" stop-color="#d9480f"/>
-<stop offset="1" stop-color="#5c1a03"/>
-</radialGradient>
-<radialGradient id="lobeSide" cx="28%" cy="30%" r="95%">
-<stop offset="0" stop-color="#ff9c33"/>
-<stop offset=".55" stop-color="#bf3f0a"/>
-<stop offset="1" stop-color="#4a1402"/>
-</radialGradient>
-<linearGradient id="stemG" x1="0" y1="0" x2="1" y2="0">
-<stop offset="0" stop-color="#3a5518"/>
-<stop offset=".45" stop-color="#8aa83a"/>
-<stop offset="1" stop-color="#26380d"/>
-</linearGradient>
-<radialGradient id="faceG" cx="50%" cy="55%" r="65%">
-<stop offset="0" stop-color="#fff6b0"/>
-<stop offset=".55" stop-color="#ffc936"/>
-<stop offset="1" stop-color="#ff7a00"/>
-</radialGradient>
-<radialGradient id="spill" cx="50%" cy="50%" r="50%">
-<stop offset="0" stop-color="#ffb02e" stop-opacity=".55"/>
-<stop offset="1" stop-color="#ff6a00" stop-opacity="0"/>
-</radialGradient>
-<radialGradient id="shadowG" cx="50%" cy="50%" r="50%">
-<stop offset="0" stop-color="#000" stop-opacity=".75"/>
-<stop offset="1" stop-color="#000" stop-opacity="0"/>
-</radialGradient>
-<filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
-<feGaussianBlur stdDeviation="3"/>
-</filter>
-<filter id="softer" x="-30%" y="-30%" width="160%" height="160%">
-<feGaussianBlur stdDeviation="1.4"/>
-</filter>
-<filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
-<feGaussianBlur stdDeviation="5" result="b"/>
-<feMerge>
-<feMergeNode in="b"/>
-<feMergeNode in="SourceGraphic"/>
-</feMerge>
-</filter>
-<filter id="dofA" x="-20%" y="-20%" width="140%" height="140%">
-<feGaussianBlur stdDeviation="2.2"/>
-</filter>
-<filter id="dofB" x="-20%" y="-20%" width="140%" height="140%">
-<feGaussianBlur stdDeviation="4.5"/>
-</filter>
-<filter id="skin" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
-<feTurbulence type="fractalNoise" baseFrequency=".06 .012" numOctaves="4" seed="8" result="n"/>
-<feDiffuseLighting in="n" lighting-color="#fff" surfaceScale="1.6" diffuseConstant="1.1" result="l">
-<feDistantLight azimuth="225" elevation="62"/>
-</feDiffuseLighting>
-<feComponentTransfer in="l" result="l2">
-<feFuncR type="linear" slope="1.2"/>
-<feFuncG type="linear" slope="1.2"/>
-<feFuncB type="linear" slope="1.2"/>
-</feComponentTransfer>
-<feComposite in="l2" in2="SourceAlpha" operator="in" result="lc"/>
-<feBlend in="SourceGraphic" in2="lc" mode="multiply"/>
-</filter>
-<filter id="cardGlow" x="-5%" y="-10%" width="110%" height="120%">
-<feGaussianBlur stdDeviation="6" result="b"/>
-<feMerge>
-<feMergeNode in="b"/>
-<feMergeNode in="SourceGraphic"/>
-</feMerge>
-</filter>
-<g id="pk">
-<g filter="url(#skin)">
-<ellipse cx="30"  cy="106" rx="28" ry="56" fill="url(#lobeSide)" stroke="#4a1402" stroke-width="2"/>
-<ellipse cx="170" cy="106" rx="28" ry="56" fill="url(#lobeSide)" stroke="#4a1402" stroke-width="2"/>
-<ellipse cx="52"  cy="104" rx="34" ry="64" fill="url(#lobeSide)" stroke="#5c1a03" stroke-width="2"/>
-<ellipse cx="148" cy="104" rx="34" ry="64" fill="url(#lobeSide)" stroke="#5c1a03" stroke-width="2"/>
-<ellipse cx="74"  cy="102" rx="38" ry="70" fill="url(#lobe)" stroke="#6f2004" stroke-width="2"/>
-<ellipse cx="126" cy="102" rx="38" ry="70" fill="url(#lobe)" stroke="#6f2004" stroke-width="2"/>
-<ellipse cx="100" cy="100" rx="40" ry="74" fill="url(#lobe)" stroke="#7a2504" stroke-width="2"/>
-</g>
-<g class="turn">
-<g fill="none" stroke="#2e0b00" stroke-linecap="round" filter="url(#softer)">
-<path d="M58 40 C38 80 38 130 58 168" stroke-width="4" opacity=".6"/>
-<path d="M142 40 C162 80 162 130 142 168" stroke-width="4" opacity=".6"/>
-<path d="M30 56 C14 86 14 126 30 156" stroke-width="3.5" opacity=".5"/>
-<path d="M170 56 C186 86 186 126 170 156" stroke-width="3.5" opacity=".5"/>
-<path d="M100 30 C84 70 84 132 100 172" stroke-width="2.4" opacity=".28"/>
-</g>
-</g>
-<g class="spec">
-<ellipse cx="76" cy="58" rx="15" ry="28" fill="#fff" opacity=".3" filter="url(#soft)" transform="rotate(-18 76 58)"/>
-<ellipse cx="40" cy="84" rx="7" ry="20" fill="#fff" opacity=".17" filter="url(#soft)"/>
-<ellipse cx="150" cy="70" rx="5" ry="26" fill="#ffd9a0" opacity=".25" filter="url(#soft)"/>
-</g>
-<ellipse cx="100" cy="158" rx="52" ry="18" fill="#2a0800" opacity=".3" filter="url(#soft)"/>
-<path d="M26 150 C60 176 140 176 174 150" fill="none" stroke="#ff9a2e" stroke-width="3" opacity=".22" filter="url(#softer)"/>
-<path d="M88 42 C86 26 90 14 99 6 C110 14 114 26 112 42 C106 47 94 47 88 42 Z" fill="url(#stemG)" stroke="#223208" stroke-width="1.6"/>
-<path d="M92 38 C92 28 94 20 98 14" fill="none" stroke="#c4dc72" stroke-width="2" opacity=".5" stroke-linecap="round"/>
-<path d="M99 6 C108 -2 118 0 121 8" fill="none" stroke="#4d6c1f" stroke-width="3.4" stroke-linecap="round"/>
-<path d="M88 42 C96 50 104 50 112 42" fill="none" stroke="#2a1405" stroke-width="2" opacity=".7"/>
-<g class="turn face">
-<ellipse cx="100" cy="110" rx="46" ry="38" fill="url(#spill)" filter="url(#soft)"/>
-<g fill="#2a0a00">
-<path d="M64 84 L90 77 L85 103 Z"/>
-<path d="M136 84 L110 77 L115 103 Z"/>
-<path d="M100 98 L91 117 L109 117 Z"/>
-<path d="M60 121 L74 135 L83 124 L92 140 L100 127 L108 140 L117 124 L126 135 L140 121 C128 156 72 156 60 121 Z"/>
-</g>
-<g filter="url(#glow)">
-<path d="M68 86 L88 80 L84 99 Z" fill="url(#faceG)"/>
-<path d="M132 86 L112 80 L116 99 Z" fill="url(#faceG)"/>
-<path d="M100 101 L94 114 L106 114 Z" fill="url(#faceG)"/>
-<path d="M65 123 L76 133 L84 125 L92 137 L100 128 L108 137 L116 125 L124 133 L135 123 C125 151 75 151 65 123 Z" fill="url(#faceG)"/>
-</g>
-</g>
-</g>
+  <radialGradient id="bgG" cx="50%" cy="38%" r="80%">
+    <stop offset="0" stop-color="#2b1309"/><stop offset=".55" stop-color="#130a07"/><stop offset="1" stop-color="#050303"/>
+  </radialGradient>
+  <radialGradient id="moonG" cx="50%" cy="50%" r="50%">
+    <stop offset="0" stop-color="#ffb347" stop-opacity=".32"/><stop offset="1" stop-color="#ff6a00" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="fogG" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#ff7a1a" stop-opacity="0"/><stop offset="1" stop-color="#ff7a1a" stop-opacity=".14"/>
+  </linearGradient>
+
+  <!-- pumpkin skin -->
+  <radialGradient id="lobe" cx="36%" cy="28%" r="85%">
+    <stop offset="0" stop-color="#ffc067"/><stop offset=".28" stop-color="#ff8f24"/>
+    <stop offset=".65" stop-color="#d9480f"/><stop offset="1" stop-color="#5c1a03"/>
+  </radialGradient>
+  <radialGradient id="lobeSide" cx="28%" cy="30%" r="95%">
+    <stop offset="0" stop-color="#ff9c33"/><stop offset=".55" stop-color="#bf3f0a"/><stop offset="1" stop-color="#4a1402"/>
+  </radialGradient>
+  <linearGradient id="stemG" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#3a5518"/><stop offset=".45" stop-color="#8aa83a"/><stop offset="1" stop-color="#26380d"/>
+  </linearGradient>
+  <radialGradient id="faceG" cx="50%" cy="55%" r="65%">
+    <stop offset="0" stop-color="#fff6b0"/><stop offset=".55" stop-color="#ffc936"/><stop offset="1" stop-color="#ff7a00"/>
+  </radialGradient>
+  <radialGradient id="spill" cx="50%" cy="50%" r="50%">
+    <stop offset="0" stop-color="#ffb02e" stop-opacity=".55"/><stop offset="1" stop-color="#ff6a00" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="shadowG" cx="50%" cy="50%" r="50%">
+    <stop offset="0" stop-color="#000" stop-opacity=".75"/><stop offset="1" stop-color="#000" stop-opacity="0"/>
+  </radialGradient>
+
+  <filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3"/></filter>
+  <filter id="softer" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="1.4"/></filter>
+  <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+    <feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="dofA" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2.2"/></filter>
+  <filter id="dofB" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="4.5"/></filter>
+  <!-- bumpy pumpkin skin -->
+  <filter id="skin" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency="0.06 0.012" numOctaves="4" seed="8" result="n"/>
+    <feDiffuseLighting in="n" lighting-color="#fff" surfaceScale="1.6" diffuseConstant="1.1" result="l">
+      <feDistantLight azimuth="225" elevation="62"/>
+    </feDiffuseLighting>
+    <feComponentTransfer in="l" result="l2"><feFuncR type="linear" slope="1.2"/><feFuncG type="linear" slope="1.2"/><feFuncB type="linear" slope="1.2"/></feComponentTransfer>
+    <feComposite in="l2" in2="SourceAlpha" operator="in" result="lc"/>
+    <feBlend in="SourceGraphic" in2="lc" mode="multiply"/>
+  </filter>
+  <filter id="cardGlow" x="-5%" y="-10%" width="110%" height="120%">
+    <feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+
+  <!-- ===== one realistic 3D pumpkin (200 x 190 box, centre 100,100) ===== -->
+  <g id="pk">
+    <g filter="url(#skin)">
+      <ellipse cx="30"  cy="106" rx="28" ry="56" fill="url(#lobeSide)" stroke="#4a1402" stroke-width="2"/>
+      <ellipse cx="170" cy="106" rx="28" ry="56" fill="url(#lobeSide)" stroke="#4a1402" stroke-width="2"/>
+      <ellipse cx="52"  cy="104" rx="34" ry="64" fill="url(#lobeSide)" stroke="#5c1a03" stroke-width="2"/>
+      <ellipse cx="148" cy="104" rx="34" ry="64" fill="url(#lobeSide)" stroke="#5c1a03" stroke-width="2"/>
+      <ellipse cx="74"  cy="102" rx="38" ry="70" fill="url(#lobe)" stroke="#6f2004" stroke-width="2"/>
+      <ellipse cx="126" cy="102" rx="38" ry="70" fill="url(#lobe)" stroke="#6f2004" stroke-width="2"/>
+      <ellipse cx="100" cy="100" rx="40" ry="74" fill="url(#lobe)" stroke="#7a2504" stroke-width="2"/>
+    </g>
+    <!-- turning ribs and creases (shift left/right = the pumpkin appears to rotate) -->
+    <g class="turn">
+      <g fill="none" stroke="#2e0b00" stroke-linecap="round" filter="url(#softer)">
+        <path d="M58 40 C38 80 38 130 58 168" stroke-width="4" opacity=".6"/>
+        <path d="M142 40 C162 80 162 130 142 168" stroke-width="4" opacity=".6"/>
+        <path d="M30 56 C14 86 14 126 30 156" stroke-width="3.5" opacity=".5"/>
+        <path d="M170 56 C186 86 186 126 170 156" stroke-width="3.5" opacity=".5"/>
+        <path d="M100 30 C84 70 84 132 100 172" stroke-width="2.4" opacity=".28"/>
+      </g>
+    </g>
+    <!-- light and shade -->
+    <g class="spec">
+      <ellipse cx="76" cy="58" rx="15" ry="28" fill="#fff" opacity=".3" filter="url(#soft)" transform="rotate(-18 76 58)"/>
+      <ellipse cx="40" cy="84" rx="7" ry="20" fill="#fff" opacity=".17" filter="url(#soft)"/>
+      <ellipse cx="150" cy="70" rx="5" ry="26" fill="#ffd9a0" opacity=".25" filter="url(#soft)"/>
+    </g>
+    <ellipse cx="100" cy="158" rx="52" ry="18" fill="#2a0800" opacity=".3" filter="url(#soft)"/>
+    <path d="M26 150 C60 176 140 176 174 150" fill="none" stroke="#ff9a2e" stroke-width="3" opacity=".22" filter="url(#softer)"/>
+    <!-- stem -->
+    <path d="M88 42 C86 26 90 14 99 6 C110 14 114 26 112 42 C106 47 94 47 88 42 Z" fill="url(#stemG)" stroke="#223208" stroke-width="1.6"/>
+    <path d="M92 38 C92 28 94 20 98 14" fill="none" stroke="#c4dc72" stroke-width="2" opacity=".5" stroke-linecap="round"/>
+    <path d="M99 6 C108 -2 118 0 121 8" fill="none" stroke="#4d6c1f" stroke-width="3.4" stroke-linecap="round"/>
+    <path d="M88 42 C96 50 104 50 112 42" fill="none" stroke="#2a1405" stroke-width="2" opacity=".7"/>
+    <!-- carved face with inner glow -->
+    <g class="turn face">
+      <ellipse cx="100" cy="110" rx="46" ry="38" fill="url(#spill)" filter="url(#soft)"/>
+      <g fill="#2a0a00">
+        <path d="M64 84 L90 77 L85 103 Z"/><path d="M136 84 L110 77 L115 103 Z"/>
+        <path d="M100 98 L91 117 L109 117 Z"/>
+        <path d="M60 121 L74 135 L83 124 L92 140 L100 127 L108 140 L117 124 L126 135 L140 121 C128 156 72 156 60 121 Z"/>
+      </g>
+      <g filter="url(#glow)">
+        <path d="M68 86 L88 80 L84 99 Z" fill="url(#faceG)"/>
+        <path d="M132 86 L112 80 L116 99 Z" fill="url(#faceG)"/>
+        <path d="M100 101 L94 114 L106 114 Z" fill="url(#faceG)"/>
+        <path d="M65 123 L76 133 L84 125 L92 137 L100 128 L108 137 L116 125 L124 133 L135 123 C125 151 75 151 65 123 Z" fill="url(#faceG)"/>
+      </g>
+    </g>
+  </g>
 </defs>
+
 <rect width="980" height="1185" fill="url(#bgG)"/>
-<circle cx="490" cy="260" r="330" fill="url(#moonG)"/>
+<circle cx="490.0" cy="260" r="330" fill="url(#moonG)"/>
 <rect y="865" width="980" height="320" fill="url(#fogG)"/>
-<g opacity=".6" filter="url(#dofB)">
-<g transform="translate(215 150)">
-<ellipse class="gs" style="--d:1s" cy="66" rx="63" ry="10.5" fill="url(#shadowG)"/>
-<g transform="scale(.75 .75)">
-<use class="bobC" style="--d:1s" x="-100" y="-100" xlink:href="#pk"/>
-</g>
-</g>
-</g>
-<g opacity=".6" filter="url(#dofB)">
-<g transform="translate(770 140)">
-<ellipse class="gs" style="--d:3s" cy="70.4" rx="67.2" ry="11.2" fill="url(#shadowG)"/>
-<g transform="scale(.8 .8)">
-<use class="bobB" style="--d:3s" x="-100" y="-100" xlink:href="#pk"/>
-</g>
-</g>
-</g>
-<g opacity=".55" filter="url(#dofB)">
-<g transform="translate(780 395)">
-<ellipse class="gs" style="--d:5s" cy="74.8" rx="71.4" ry="11.9" fill="url(#shadowG)"/>
-<g transform="scale(.85 .85)">
-<use class="bobC" style="--d:5s" x="-100" y="-100" xlink:href="#pk"/>
-</g>
-</g>
-</g>
-<g opacity=".6" filter="url(#dofA)">
-<g transform="translate(190 640)">
-<ellipse class="gs" style="--d:2s" cy="70.4" rx="67.2" ry="11.2" fill="url(#shadowG)"/>
-<g transform="scale(.8 .8)">
-<use class="bobB" style="--d:2s" x="-100" y="-100" xlink:href="#pk"/>
-</g>
-</g>
-</g>
-<g opacity=".5" filter="url(#dofB)">
-<g transform="translate(500 900)">
-<ellipse class="gs" style="--d:6s" cy="79.2" rx="75.6" ry="12.6" fill="url(#shadowG)"/>
-<g transform="scale(.9 .9)">
-<use class="bobC" style="--d:6s" x="-100" y="-100" xlink:href="#pk"/>
-</g>
-</g>
-</g>
-<g opacity=".55" filter="url(#dofA)">
-<g transform="translate(840 960)">
-<ellipse class="gs" style="--d:4s" cy="61.6" rx="58.8" ry="9.8" fill="url(#shadowG)"/>
-<g transform="scale(.7 .7)">
-<use class="bobB" style="--d:4s" x="-100" y="-100" xlink:href="#pk"/>
-</g>
-</g>
-</g>
-<circle class="e" cx="341" cy="746" r="2.8" style="animation-duration:7s;animation-delay:-1s"/>
-<circle class="e" cx="454" cy="1020" r="1.1" style="animation-duration:10s;animation-delay:-1s"/>
-<circle class="e" cx="57" cy="1162" r="1.6" style="animation-duration:11s;animation-delay:-6s"/>
-<circle class="e" cx="109" cy="1152" r="1.1" style="animation-duration:7s;animation-delay:-9s"/>
-<circle class="e" cx="823" cy="776" r="1.6" style="animation-duration:8s;animation-delay:-9s"/>
-<circle class="e" cx="438" cy="760" r="2.2" style="animation-duration:9s;animation-delay:-14s"/>
-<circle class="e" cx="368" cy="1100" r="2.8" style="animation-duration:8s;animation-delay:-13s"/>
-<circle class="e" cx="405" cy="947" r="1.1" style="animation-duration:14s;animation-delay:-5s"/>
-<circle class="e" cx="410" cy="1100" r="1.1" style="animation-duration:9s;animation-delay:-7s"/>
-<circle class="e" cx="709" cy="981" r="1.6" style="animation-duration:9s;animation-delay:-1s"/>
-<g class="bat" style="animation-delay:-3s">
-<g transform="translate(0 110)">
-<g class="flap">
-<path d="M0 0C-9-10-22-8-30 2C-22 0-18 4-14 8C-10 2-4 4 0 9C4 4 10 2 14 8C18 4 22 0 30 2C22-8 9-10 0 0Z" fill="#0a0606"/>
-</g>
-</g>
-</g>
-<g class="bat" style="animation-delay:-10s">
-<g transform="translate(0 640)">
-<g class="flap">
-<path d="M0 0C-9-10-22-8-30 2C-22 0-18 4-14 8C-10 2-4 4 0 9C4 4 10 2 14 8C18 4 22 0 30 2C22-8 9-10 0 0Z" fill="#0a0606"/>
-</g>
-</g>
-</g>
-<rect class="c" x="70" y="40" width="840" height="190" rx="22"/>
-<text x="490" y="118" text-anchor="middle" font-size="62" fill="#ff8a1f" stroke="#7a2504" stroke-width="1.2" letter-spacing="2" filter="url(#glow)">SAPTAK CHAKI</text>
-<text x="490" y="162" text-anchor="middle" class="m" font-weight="700" font-size="19" fill="#ffd36a" letter-spacing="2.5">🎃 ASPIRING PYTHON FULL STACK DEVELOPER 🎃</text>
-<text x="490" y="198" text-anchor="middle" class="s" font-style="italic" font-size="18" fill="#cfe3ff">B.Tech CSE · IoT · Cyber Security · Blockchain</text>
-<rect class="c" x="70" y="260" width="840" height="220" rx="22"/>
-<text x="106" y="308" font-size="28" fill="#ffb02e" letter-spacing="1">🕸 ABOUT THE SPELLBINDER</text>
-<text x="106" y="352" class="p" fill="#f3e9dc">Welcome to my Halloween lair! I am Saptak Chaki, a B.Tech</text>
-<text x="106" y="382" class="p" fill="#f3e9dc">CSE student crafting powerful Python full-stack applications.</text>
-<text x="106" y="412" class="p" fill="#f3e9dc">I specialize in IoT, Cyber Security, and Blockchain—brewing</text>
-<text x="106" y="442" class="p" fill="#f3e9dc">secure, high-performance digital magic into every build.</text>
-<rect class="c" x="70" y="510" width="840" height="255" rx="22"/>
-<text x="490" y="558" text-anchor="middle" font-size="28" fill="#ff5a2a" letter-spacing="1.5">🎃 HALLOWEEN STATS &amp; STREAK 🎃</text>
-<g>
-<g transform="translate(210 622)">
-<ellipse class="gs" style="--d:0s" cy="49.3" rx="47" ry="7.8" fill="url(#shadowG)"/>
-<g transform="scale(.56 .56)">
-<use class="bobA" style="--d:0s" x="-100" y="-100" xlink:href="#pk"/>
-</g>
-</g>
-</g>
-<text class="num" x="210" y="710" text-anchor="middle" font-size="34" fill="#fff4d6" stroke="#5c1a03" stroke-width="1.2">11</text>
-<text x="210" y="741" text-anchor="middle" class="m" font-size="14" fill="#ff7a3c" letter-spacing="2">COMMITS</text>
-<g>
-<g transform="translate(490 622)">
-<ellipse class="gs" style="--d:2s" cy="49.3" rx="47" ry="7.8" fill="url(#shadowG)"/>
-<g transform="scale(.56 .56)">
-<use class="bobB" style="--d:2s" x="-100" y="-100" xlink:href="#pk"/>
-</g>
-</g>
-</g>
-<text class="num" x="490" y="710" text-anchor="middle" font-size="34" fill="#fff4d6" stroke="#5c1a03" stroke-width="1.2">2</text>
-<text x="490" y="741" text-anchor="middle" class="m" font-size="14" fill="#ff7a3c" letter-spacing="2">REPOSITORIES</text>
-<g>
-<g transform="translate(770 622)">
-<ellipse class="gs" style="--d:4s" cy="49.3" rx="47" ry="7.8" fill="url(#shadowG)"/>
-<g transform="scale(.56 .56)">
-<use class="bobC" style="--d:4s" x="-100" y="-100" xlink:href="#pk"/>
-</g>
-</g>
-</g>
-<text class="num" x="770" y="710" text-anchor="middle" font-size="34" fill="#fff4d6" stroke="#5c1a03" stroke-width="1.2">0 / 0</text>
-<text x="770" y="741" text-anchor="middle" class="m" font-size="14" fill="#ff7a3c" letter-spacing="2">STARS / STREAK</text>
-<rect class="c" x="70" y="790" width="840" height="345" rx="22"/>
-<text x="106" y="840" font-size="28" fill="#ffb02e" letter-spacing="1">🔮 WITCH’S TECH BREW</text>
-<rect x="122" y="868" width="232" height="52" rx="14" class="h"/>
-<text x="238" y="900" text-anchor="middle" class="p" fill="#ffd36a">Python</text>
-<rect x="374" y="868" width="232" height="52" rx="14" class="n"/>
-<text x="490" y="900" text-anchor="middle" class="p" fill="#e8eefc">Django</text>
-<rect x="626" y="868" width="232" height="52" rx="14" class="h"/>
-<text x="742" y="900" text-anchor="middle" class="p" fill="#ffd36a">Flask / FastAPI</text>
-<rect x="122" y="936" width="232" height="52" rx="14" class="n"/>
-<text x="238" y="968" text-anchor="middle" class="p" fill="#e8eefc">HTML / CSS</text>
-<rect x="374" y="936" width="232" height="52" rx="14" class="h"/>
-<text x="490" y="968" text-anchor="middle" class="p" fill="#ffd36a">JavaScript</text>
-<rect x="626" y="936" width="232" height="52" rx="14" class="n"/>
-<text x="742" y="968" text-anchor="middle" class="p" fill="#e8eefc">React</text>
-<rect x="122" y="1004" width="232" height="52" rx="14" class="h"/>
-<text x="238" y="1036" text-anchor="middle" class="p" fill="#ffd36a">SQL / MySQL</text>
-<rect x="374" y="1004" width="232" height="52" rx="14" class="n"/>
-<text x="490" y="1036" text-anchor="middle" class="p" fill="#e8eefc">Git / GitHub</text>
-<rect x="626" y="1004" width="232" height="52" rx="14" class="h"/>
-<text x="742" y="1036" text-anchor="middle" class="p" fill="#ffd36a">Linux</text>
-<rect x="122" y="1072" width="232" height="52" rx="14" class="n"/>
-<text x="238" y="1104" text-anchor="middle" class="p" fill="#e8eefc">IoT</text>
-<rect x="374" y="1072" width="232" height="52" rx="14" class="h"/>
-<text x="490" y="1104" text-anchor="middle" class="p" fill="#ffd36a">Cyber Security</text>
-<rect x="626" y="1072" width="232" height="52" rx="14" class="n"/>
-<text x="742" y="1104" text-anchor="middle" class="p" fill="#e8eefc">Blockchain</text>
-<g>
-<g transform="translate(58 520)">
-<ellipse class="gs" style="--d:0s" cy="54.6" rx="52.1" ry="8.7" fill="url(#shadowG)"/>
-<g transform="scale(.62 .62)">
-<use class="bobA" style="--d:0s" x="-100" y="-100" xlink:href="#pk"/>
-</g>
-</g>
-</g>
-<g>
-<g transform="translate(922 470)">
-<ellipse class="gs" style="--d:2s" cy="51" rx="48.7" ry="8.1" fill="url(#shadowG)"/>
-<g transform="scale(.58 .58)">
-<use class="bobB" style="--d:2s" x="-100" y="-100" xlink:href="#pk"/>
-</g>
-</g>
-</g>
-<g>
-<g transform="translate(70 1095)">
-<ellipse class="gs" style="--d:4s" cy="44" rx="42" ry="7" fill="url(#shadowG)"/>
-<g transform="scale(.5 .5)">
-<use class="bobB" style="--d:4s" x="-100" y="-100" xlink:href="#pk"/>
-</g>
-</g>
-</g>
-<g>
-<g transform="translate(910 1105)">
-<ellipse class="gs" style="--d:1s" cy="48.4" rx="46.2" ry="7.7" fill="url(#shadowG)"/>
-<g transform="scale(.55 .55)">
-<use class="bobA" style="--d:1s" x="-100" y="-100" xlink:href="#pk"/>
-</g>
-</g>
-</g>
+<g opacity="0.6" filter="url(#dofB)"><g transform="translate(215 150)"><ellipse class="gs" style="--d:1s" cx="0" cy="66.0" rx="63.0" ry="10.5" fill="url(#shadowG)"/><g transform="scale(0.75 0.75)"><g class="bobC" style="--d:1s;transform-box:fill-box;transform-origin:50% 100%"><g transform="translate(-100 -100)"><use xlink:href="#pk"/></g></g></g></g></g>
+<g opacity="0.6" filter="url(#dofB)"><g transform="translate(770 140)"><ellipse class="gs" style="--d:3s" cx="0" cy="70.4" rx="67.2" ry="11.2" fill="url(#shadowG)"/><g transform="scale(0.8 0.8)"><g class="bobB" style="--d:3s;transform-box:fill-box;transform-origin:50% 100%"><g transform="translate(-100 -100)"><use xlink:href="#pk"/></g></g></g></g></g>
+<g opacity="0.55" filter="url(#dofB)"><g transform="translate(780 395)"><ellipse class="gs" style="--d:5s" cx="0" cy="74.8" rx="71.4" ry="11.9" fill="url(#shadowG)"/><g transform="scale(0.85 0.85)"><g class="bobC" style="--d:5s;transform-box:fill-box;transform-origin:50% 100%"><g transform="translate(-100 -100)"><use xlink:href="#pk"/></g></g></g></g></g>
+<g opacity="0.6" filter="url(#dofA)"><g transform="translate(190 640)"><ellipse class="gs" style="--d:2s" cx="0" cy="70.4" rx="67.2" ry="11.2" fill="url(#shadowG)"/><g transform="scale(0.8 0.8)"><g class="bobB" style="--d:2s;transform-box:fill-box;transform-origin:50% 100%"><g transform="translate(-100 -100)"><use xlink:href="#pk"/></g></g></g></g></g>
+<g opacity="0.5" filter="url(#dofB)"><g transform="translate(500 900)"><ellipse class="gs" style="--d:6s" cx="0" cy="79.2" rx="75.6" ry="12.6" fill="url(#shadowG)"/><g transform="scale(0.9 0.9)"><g class="bobC" style="--d:6s;transform-box:fill-box;transform-origin:50% 100%"><g transform="translate(-100 -100)"><use xlink:href="#pk"/></g></g></g></g></g>
+<g opacity="0.55" filter="url(#dofA)"><g transform="translate(840 960)"><ellipse class="gs" style="--d:4s" cx="0" cy="61.6" rx="58.8" ry="9.8" fill="url(#shadowG)"/><g transform="scale(-0.7 0.7)"><g class="bobB" style="--d:4s;transform-box:fill-box;transform-origin:50% 100%"><g transform="translate(-100 -100)"><use xlink:href="#pk"/></g></g></g></g></g>
+<circle class="ember" cx="341" cy="746" r="2.8" fill="#ffa43a" style="animation-duration:7s;animation-delay:-1s"/>
+<circle class="ember" cx="850" cy="1140" r="1.1" fill="#ffa43a" style="animation-duration:12s;animation-delay:-9s"/>
+<circle class="ember" cx="69" cy="1111" r="1.6" fill="#ffa43a" style="animation-duration:7s;animation-delay:-1s"/>
+<circle class="ember" cx="454" cy="1020" r="1.1" fill="#ffa43a" style="animation-duration:10s;animation-delay:-1s"/>
+<circle class="ember" cx="574" cy="1026" r="1.1" fill="#ffa43a" style="animation-duration:8s;animation-delay:-3s"/>
+<circle class="ember" cx="655" cy="655" r="2.8" fill="#ffa43a" style="animation-duration:7s;animation-delay:-3s"/>
+<circle class="ember" cx="57" cy="1162" r="1.6" fill="#ffa43a" style="animation-duration:11s;animation-delay:-6s"/>
+<circle class="ember" cx="157" cy="1145" r="1.1" fill="#ffa43a" style="animation-duration:11s;animation-delay:-8s"/>
+<circle class="ember" cx="845" cy="777" r="1.1" fill="#ffa43a" style="animation-duration:10s;animation-delay:-5s"/>
+<circle class="ember" cx="109" cy="1152" r="1.1" fill="#ffa43a" style="animation-duration:7s;animation-delay:-9s"/>
+<circle class="ember" cx="220" cy="1100" r="2.8" fill="#ffa43a" style="animation-duration:12s;animation-delay:-7s"/>
+<circle class="ember" cx="609" cy="1056" r="2.2" fill="#ffa43a" style="animation-duration:11s;animation-delay:-3s"/>
+<circle class="ember" cx="823" cy="776" r="1.6" fill="#ffa43a" style="animation-duration:8s;animation-delay:-9s"/>
+<circle class="ember" cx="317" cy="1129" r="2.8" fill="#ffa43a" style="animation-duration:12s;animation-delay:-11s"/>
+<circle class="ember" cx="469" cy="886" r="1.1" fill="#ffa43a" style="animation-duration:8s;animation-delay:-8s"/>
+<circle class="ember" cx="438" cy="760" r="2.2" fill="#ffa43a" style="animation-duration:9s;animation-delay:-14s"/>
+<circle class="ember" cx="510" cy="1023" r="1.1" fill="#ffa43a" style="animation-duration:8s;animation-delay:-12s"/>
+<circle class="ember" cx="581" cy="1178" r="2.2" fill="#ffa43a" style="animation-duration:12s;animation-delay:-11s"/>
+<circle class="ember" cx="368" cy="1100" r="2.8" fill="#ffa43a" style="animation-duration:8s;animation-delay:-13s"/>
+<circle class="ember" cx="105" cy="868" r="2.8" fill="#ffa43a" style="animation-duration:8s;animation-delay:-0s"/>
+<circle class="ember" cx="758" cy="909" r="2.8" fill="#ffa43a" style="animation-duration:11s;animation-delay:-11s"/>
+<circle class="ember" cx="405" cy="947" r="1.1" fill="#ffa43a" style="animation-duration:14s;animation-delay:-5s"/>
+<circle class="ember" cx="182" cy="711" r="2.8" fill="#ffa43a" style="animation-duration:7s;animation-delay:-3s"/>
+<circle class="ember" cx="796" cy="886" r="1.6" fill="#ffa43a" style="animation-duration:10s;animation-delay:-6s"/>
+<circle class="ember" cx="410" cy="1100" r="1.1" fill="#ffa43a" style="animation-duration:9s;animation-delay:-7s"/>
+<circle class="ember" cx="421" cy="1154" r="2.2" fill="#ffa43a" style="animation-duration:9s;animation-delay:-13s"/>
+<circle class="ember" cx="450" cy="1155" r="2.2" fill="#ffa43a" style="animation-duration:13s;animation-delay:-5s"/>
+<circle class="ember" cx="709" cy="981" r="1.6" fill="#ffa43a" style="animation-duration:9s;animation-delay:-1s"/>
+<circle class="ember" cx="190" cy="746" r="1.6" fill="#ffa43a" style="animation-duration:10s;animation-delay:-0s"/>
+<circle class="ember" cx="506" cy="778" r="2.2" fill="#ffa43a" style="animation-duration:11s;animation-delay:-0s"/>
+<circle class="ember" cx="159" cy="1021" r="2.2" fill="#ffa43a" style="animation-duration:12s;animation-delay:-2s"/>
+<circle class="ember" cx="717" cy="1119" r="1.1" fill="#ffa43a" style="animation-duration:14s;animation-delay:-14s"/>
+<circle class="ember" cx="901" cy="1164" r="2.8" fill="#ffa43a" style="animation-duration:13s;animation-delay:-6s"/>
+<circle class="ember" cx="413" cy="698" r="2.8" fill="#ffa43a" style="animation-duration:13s;animation-delay:-0s"/>
+<circle class="ember" cx="205" cy="660" r="1.6" fill="#ffa43a" style="animation-duration:14s;animation-delay:-2s"/>
+<circle class="ember" cx="122" cy="940" r="1.1" fill="#ffa43a" style="animation-duration:8s;animation-delay:-0s"/>
+<g class="bat" style="animation-delay:-3s"><g transform="translate(0 110)"><g class="flap"><path d="M0 0C-9-10-22-8-30 2C-22 0-18 4-14 8C-10 2-4 4 0 9C4 4 10 2 14 8C18 4 22 0 30 2C22-8 9-10 0 0Z" fill="#0a0606"/></g></g></g>
+<g class="bat" style="animation-delay:-10s"><g transform="translate(0 640)"><g class="flap"><path d="M0 0C-9-10-22-8-30 2C-22 0-18 4-14 8C-10 2-4 4 0 9C4 4 10 2 14 8C18 4 22 0 30 2C22-8 9-10 0 0Z" fill="#0a0606"/></g></g></g>
+<rect x="70" y="40" width="840" height="190" rx="22" fill="#0b0604" fill-opacity=".5" stroke="#ff3b1f" stroke-width="1.8" filter="url(#cardGlow)"/>
+<text x="490.0" y="118" text-anchor="middle" font-family="Impact,Haettenschweiler,'Arial Narrow Bold','Franklin Gothic Heavy',sans-serif" font-size="62" fill="#ff8a1f" stroke="#7a2504" stroke-width="1.2" letter-spacing="2" filter="url(#glow)">SAPTAK CHAKI</text>
+<text x="490.0" y="162" text-anchor="middle" font-family="'Courier New',Courier,monospace" font-weight="700" font-size="19" fill="#ffd36a" letter-spacing="2.5">🎃 ASPIRING PYTHON FULL STACK DEVELOPER 🎃</text>
+<text x="490.0" y="198" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-style="italic" font-size="18" fill="#cfe3ff">B.Tech CSE · IoT · Cyber Security · Blockchain</text>
+<rect x="70" y="260" width="840" height="220" rx="22" fill="#0b0604" fill-opacity=".5" stroke="#ff3b1f" stroke-width="1.8" filter="url(#cardGlow)"/>
+<text x="106" y="308" font-family="Impact,Haettenschweiler,'Arial Narrow Bold','Franklin Gothic Heavy',sans-serif" font-size="28" fill="#ffb02e" letter-spacing="1">🕸 ABOUT THE SPELLBINDER</text>
+<text x="106" y="352" font-family="'Courier New',Courier,monospace" font-weight="700" font-size="17" fill="#f3e9dc">Welcome to my Halloween lair! I am Saptak Chaki, a B.Tech</text>
+<text x="106" y="382" font-family="'Courier New',Courier,monospace" font-weight="700" font-size="17" fill="#f3e9dc">CSE student crafting powerful Python full-stack applications.</text>
+<text x="106" y="412" font-family="'Courier New',Courier,monospace" font-weight="700" font-size="17" fill="#f3e9dc">I specialize in IoT, Cyber Security, and Blockchain—brewing</text>
+<text x="106" y="442" font-family="'Courier New',Courier,monospace" font-weight="700" font-size="17" fill="#f3e9dc">secure, high-performance digital magic into every build.</text>
+<rect x="70" y="510" width="840" height="255" rx="22" fill="#0b0604" fill-opacity=".5" stroke="#ff3b1f" stroke-width="1.8" filter="url(#cardGlow)"/>
+<text x="490.0" y="558" text-anchor="middle" font-family="Impact,Haettenschweiler,'Arial Narrow Bold','Franklin Gothic Heavy',sans-serif" font-size="28" fill="#ff5a2a" letter-spacing="1.5">🎃 HALLOWEEN STATS &amp; STREAK 🎃</text>
+<g opacity="1.0"><g transform="translate(210.0 622)"><ellipse class="gs" style="--d:0s" cx="0" cy="49.3" rx="47.0" ry="7.8" fill="url(#shadowG)"/><g transform="scale(0.56 0.56)"><g class="bobA" style="--d:0s;transform-box:fill-box;transform-origin:50% 100%"><g transform="translate(-100 -100)"><use xlink:href="#pk"/></g></g></g></g></g>
+<text class="num" x="210.0" y="710" text-anchor="middle" font-family="Impact,Haettenschweiler,'Arial Narrow Bold','Franklin Gothic Heavy',sans-serif" font-size="34" fill="#fff4d6" stroke="#5c1a03" stroke-width="1.2">0</text>
+<text x="210.0" y="741" text-anchor="middle" font-family="'Courier New',Courier,monospace" font-size="14" fill="#ff7a3c" letter-spacing="2">COMMITS</text>
+<g opacity="1.0"><g transform="translate(490.0 622)"><ellipse class="gs" style="--d:2s" cx="0" cy="49.3" rx="47.0" ry="7.8" fill="url(#shadowG)"/><g transform="scale(0.56 0.56)"><g class="bobB" style="--d:2s;transform-box:fill-box;transform-origin:50% 100%"><g transform="translate(-100 -100)"><use xlink:href="#pk"/></g></g></g></g></g>
+<text class="num" x="490.0" y="710" text-anchor="middle" font-family="Impact,Haettenschweiler,'Arial Narrow Bold','Franklin Gothic Heavy',sans-serif" font-size="34" fill="#fff4d6" stroke="#5c1a03" stroke-width="1.2">3</text>
+<text x="490.0" y="741" text-anchor="middle" font-family="'Courier New',Courier,monospace" font-size="14" fill="#ff7a3c" letter-spacing="2">REPOSITORIES</text>
+<g opacity="1.0"><g transform="translate(770.0 622)"><ellipse class="gs" style="--d:4s" cx="0" cy="49.3" rx="47.0" ry="7.8" fill="url(#shadowG)"/><g transform="scale(0.56 0.56)"><g class="bobC" style="--d:4s;transform-box:fill-box;transform-origin:50% 100%"><g transform="translate(-100 -100)"><use xlink:href="#pk"/></g></g></g></g></g>
+<text class="num" x="770.0" y="710" text-anchor="middle" font-family="Impact,Haettenschweiler,'Arial Narrow Bold','Franklin Gothic Heavy',sans-serif" font-size="34" fill="#fff4d6" stroke="#5c1a03" stroke-width="1.2">0 / 0</text>
+<text x="770.0" y="741" text-anchor="middle" font-family="'Courier New',Courier,monospace" font-size="14" fill="#ff7a3c" letter-spacing="2">STARS / STREAK</text>
+<rect x="70" y="790" width="840" height="345" rx="22" fill="#0b0604" fill-opacity=".5" stroke="#ff3b1f" stroke-width="1.8" filter="url(#cardGlow)"/>
+<text x="106" y="840" font-family="Impact,Haettenschweiler,'Arial Narrow Bold','Franklin Gothic Heavy',sans-serif" font-size="28" fill="#ffb02e" letter-spacing="1">🔮 WITCH’S TECH BREW</text>
+<rect x="122.0" y="868" width="232" height="52" rx="14" fill="#16164a" stroke="#ff6a2a" stroke-width="2"/>
+<text x="238.0" y="900.0" text-anchor="middle" font-family="'Courier New',Courier,monospace" font-weight="700" font-size="17" fill="#ffd36a">Python</text>
+<rect x="374.0" y="868" width="232" height="52" rx="14" fill="#0d1424" stroke="#35506e" stroke-width="1.2"/>
+<text x="490.0" y="900.0" text-anchor="middle" font-family="'Courier New',Courier,monospace" font-weight="700" font-size="17" fill="#e8eefc">Django</text>
+<rect x="626.0" y="868" width="232" height="52" rx="14" fill="#16164a" stroke="#ff6a2a" stroke-width="2"/>
+<text x="742.0" y="900.0" text-anchor="middle" font-family="'Courier New',Courier,monospace" font-weight="700" font-size="17" fill="#ffd36a">Flask / FastAPI</text>
+<rect x="122.0" y="936" width="232" height="52" rx="14" fill="#0d1424" stroke="#35506e" stroke-width="1.2"/>
+<text x="238.0" y="968.0" text-anchor="middle" font-family="'Courier New',Courier,monospace" font-weight="700" font-size="17" fill="#e8eefc">HTML / CSS</text>
+<rect x="374.0" y="936" width="232" height="52" rx="14" fill="#16164a" stroke="#ff6a2a" stroke-width="2"/>
+<text x="490.0" y="968.0" text-anchor="middle" font-family="'Courier New',Courier,monospace" font-weight="700" font-size="17" fill="#ffd36a">JavaScript</text>
+<rect x="626.0" y="936" width="232" height="52" rx="14" fill="#0d1424" stroke="#35506e" stroke-width="1.2"/>
+<text x="742.0" y="968.0" text-anchor="middle" font-family="'Courier New',Courier,monospace" font-weight="700" font-size="17" fill="#e8eefc">React</text>
+<rect x="122.0" y="1004" width="232" height="52" rx="14" fill="#16164a" stroke="#ff6a2a" stroke-width="2"/>
+<text x="238.0" y="1036.0" text-anchor="middle" font-family="'Courier New',Courier,monospace" font-weight="700" font-size="17" fill="#ffd36a">SQL / MySQL</text>
+<rect x="374.0" y="1004" width="232" height="52" rx="14" fill="#0d1424" stroke="#35506e" stroke-width="1.2"/>
+<text x="490.0" y="1036.0" text-anchor="middle" font-family="'Courier New',Courier,monospace" font-weight="700" font-size="17" fill="#e8eefc">Git / GitHub</text>
+<rect x="626.0" y="1004" width="232" height="52" rx="14" fill="#16164a" stroke="#ff6a2a" stroke-width="2"/>
+<text x="742.0" y="1036.0" text-anchor="middle" font-family="'Courier New',Courier,monospace" font-weight="700" font-size="17" fill="#ffd36a">Linux</text>
+<rect x="122.0" y="1072" width="232" height="52" rx="14" fill="#0d1424" stroke="#35506e" stroke-width="1.2"/>
+<text x="238.0" y="1104.0" text-anchor="middle" font-family="'Courier New',Courier,monospace" font-weight="700" font-size="17" fill="#e8eefc">IoT</text>
+<rect x="374.0" y="1072" width="232" height="52" rx="14" fill="#16164a" stroke="#ff6a2a" stroke-width="2"/>
+<text x="490.0" y="1104.0" text-anchor="middle" font-family="'Courier New',Courier,monospace" font-weight="700" font-size="17" fill="#ffd36a">Cyber Security</text>
+<rect x="626.0" y="1072" width="232" height="52" rx="14" fill="#0d1424" stroke="#35506e" stroke-width="1.2"/>
+<text x="742.0" y="1104.0" text-anchor="middle" font-family="'Courier New',Courier,monospace" font-weight="700" font-size="17" fill="#e8eefc">Blockchain</text>
+<g opacity="1.0"><g transform="translate(58 520)"><ellipse class="gs" style="--d:0s" cx="0" cy="54.6" rx="52.1" ry="8.7" fill="url(#shadowG)"/><g transform="scale(0.62 0.62)"><g class="bobA" style="--d:0s;transform-box:fill-box;transform-origin:50% 100%"><g transform="translate(-100 -100)"><use xlink:href="#pk"/></g></g></g></g></g>
+<g opacity="1.0"><g transform="translate(922 470)"><ellipse class="gs" style="--d:2s" cx="0" cy="51.0" rx="48.7" ry="8.1" fill="url(#shadowG)"/><g transform="scale(-0.58 0.58)"><g class="bobB" style="--d:2s;transform-box:fill-box;transform-origin:50% 100%"><g transform="translate(-100 -100)"><use xlink:href="#pk"/></g></g></g></g></g>
+<g opacity="1.0"><g transform="translate(70 1095)"><ellipse class="gs" style="--d:4s" cx="0" cy="44.0" rx="42.0" ry="7.0" fill="url(#shadowG)"/><g transform="scale(0.5 0.5)"><g class="bobB" style="--d:4s;transform-box:fill-box;transform-origin:50% 100%"><g transform="translate(-100 -100)"><use xlink:href="#pk"/></g></g></g></g></g>
+<g opacity="1.0"><g transform="translate(910 1105)"><ellipse class="gs" style="--d:1s" cx="0" cy="48.4" rx="46.2" ry="7.7" fill="url(#shadowG)"/><g transform="scale(-0.55 0.55)"><g class="bobA" style="--d:1s;transform-box:fill-box;transform-origin:50% 100%"><g transform="translate(-100 -100)"><use xlink:href="#pk"/></g></g></g></g></g>
 </svg>
