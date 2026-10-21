@@ -61,7 +61,7 @@
 <text x="235" y="885" text-anchor="middle" font-family="'Courier New',Courier,monospace" font-weight="900" font-size="15" letter-spacing="3" fill="#b5b5b5">COMMITS</text>
 <g transform="translate(500 772)"><g><animateTransform attributeName="transform" type="translate" values="0 0;0 -10;0 0" dur="6s" begin="-1s" repeatCount="indefinite"/>
 <g transform="scale(0.37)"><use href="#pk" xlink:href="#pk"/></g></g></g>
-<text x="500" y="852" text-anchor="middle" font-family="'Courier New',Courier,monospace" font-weight="900" font-size="44" fill="#fff">3</text>
+<text x="500" y="852" text-anchor="middle" font-family="'Courier New',Courier,monospace" font-weight="900" font-size="44" fill="#fff">4</text>
 <text x="500" y="885" text-anchor="middle" font-family="'Courier New',Courier,monospace" font-weight="900" font-size="15" letter-spacing="3" fill="#b5b5b5">REPOSITORIES</text>
 <g transform="translate(765 772)"><g><animateTransform attributeName="transform" type="translate" values="0 0;0 -10;0 0" dur="7s" begin="-2s" repeatCount="indefinite"/>
 <g transform="scale(0.37)"><use href="#pk" xlink:href="#pk"/></g></g></g>
