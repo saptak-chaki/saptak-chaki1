@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="profile.svg" alt="Saptak Chaki - Aspiring Python Full Stack Developer" width="100%"/>
+<img src="profile.svg?v=4" alt="Saptak Chaki - Aspiring Python Full Stack Developer" width="100%"/>
 
 <br/>
 
