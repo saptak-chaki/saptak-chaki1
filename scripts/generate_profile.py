@@ -143,6 +143,10 @@ text{font-family:'Arial Black',Impact,'Segoe UI',sans-serif}
 @keyframes pop{0%{transform:scale(.1);opacity:0}8%{opacity:1}30%{transform:scale(1.15);opacity:.95}60%,100%{transform:scale(1.5,.4);opacity:0}}
 .spark{animation:sp 1.7s ease-out infinite;animation-delay:var(--d,0s);opacity:0}
 @keyframes sp{0%{transform:translate(0,0);opacity:0}10%{opacity:1}100%{transform:translate(-90px,var(--y,-20px));opacity:0}}
+.drive{animation:drv 1.3s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 100%}
+@keyframes drv{0%{transform:translate(0,0) rotate(0deg)}25%{transform:translate(-3px,-2px) rotate(-.25deg)}50%{transform:translate(2px,1.5px) rotate(.2deg)}75%{transform:translate(-2px,-1px) rotate(-.15deg)}100%{transform:translate(0,0) rotate(0deg)}}
+.hl{animation:hlp 1.6s ease-in-out infinite alternate;opacity:.35}
+@keyframes hlp{from{opacity:.1}to{opacity:.5}}
 .glow{animation:gl 2.4s ease-in-out infinite alternate}
 @keyframes gl{from{opacity:.55}to{opacity:1}}
 .arc{stroke-dashoffset:var(--len);animation:draw 2.2s ease-out forwards}
@@ -280,7 +284,8 @@ def build_svg(st):
          f'<rect width="{W}" height="{H}" fill="url(#sky)"/>', stars(rnd)]
     # photo background (user supplied)
     o.append('<rect width="980" height="373" fill="#05030f"/>')
-    o.append(f'<image x="280" y="0" width="700" height="373" href="data:image/jpeg;base64,{BG_B64}"/>')
+    o.append(f'<g class="drive"><image x="280" y="0" width="700" height="373" href="data:image/jpeg;base64,{BG_B64}"/></g>')
+    o.append('<g filter="url(#neon)"><ellipse class="hl" cx="695" cy="245" rx="20" ry="9" fill="#cfe9ff"/><ellipse class="hl" style="animation-delay:.3s" cx="875" cy="240" rx="20" ry="9" fill="#cfe9ff"/></g>')
     o.append('<rect width="980" height="373" fill="url(#fadeX)"/><rect width="980" height="373" fill="url(#fade)"/>')
     for i in range(6):
         y = 246 + i * 9
